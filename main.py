@@ -5,6 +5,7 @@ import random
 
 file=open("1-1000.txt")
 all_words=file.read()
+file.close()
 t=all_words.replace("\n"," ")
 text_split=t.split()
 
