@@ -9,7 +9,7 @@ file.close()
 t=all_words.replace("\n"," ")
 text_split=t.split()
 
-random_words = [random.choice(text_split) for x in range(36)]
+random_words = [random.choice(text_split) for x in range(100)]
 random_string = " ".join(random_words)
 user_input = [0]
 whitespaces_list = [0] + [i.start() for i in re.finditer(" ", random_string)]
@@ -31,14 +31,12 @@ def next_word(event):
     n=n+1
     z=random_words[n-1]
     correct_word = re.search(z,entry.get())
-    print(f"Correct word: {correct_word}")
     if "first_word" in text.tag_names():
         text.tag_delete("first_word")
     try:
         text.tag_delete(str(n-1)+"next")
     except:
         pass
-    print(text.tag_names())
     start = '1.' + str(whitespaces_list[n - 1])
     end = '1.' + str(whitespaces_list[n])
     text.tag_add(str(n), start, end)
@@ -81,10 +79,9 @@ def count_time(event):
         entry.insert(0,"TIME OVER")
         entry.config(state='disabled')
         clean_input=[x.rstrip() for x in user_input[1:] ]
-        print(f"Clean:{clean_input}")
+
 
     for i in range(len(clean_input)):
-        print(random_words[i])
         if random_words[i] == clean_input[i]:
             match += 1
         print(f"Match: {match}")
@@ -129,7 +126,7 @@ text=Text(label1)
 text.tag_configure("center", justify='center')
 text.insert(1.0, "")
 text.place(height=180, width=650, x=40, y= 20)
-text.config(highlightthickness=0, relief="flat", font=('Arial', 19, 'normal'), wrap=WORD)
+text.config(highlightthickness=0, relief="flat", font=('Arial', 14, 'normal'), wrap=WORD)
 text.insert(INSERT, random_string)
 text.tag_add("center", "1.0", "end")
 
