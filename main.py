@@ -126,7 +126,7 @@ text=Text(label1)
 text.tag_configure("center", justify='center')
 text.insert(1.0, "")
 text.place(height=180, width=650, x=40, y= 20)
-text.config(highlightthickness=0, relief="flat", font=('Arial', 14, 'normal'), wrap=WORD)
+text.config(highlightthickness=0, relief="flat", spacing2=3, font=('Arial', 14, 'normal'), wrap=WORD)
 text.insert(INSERT, random_string)
 text.tag_add("center", "1.0", "end")
 
